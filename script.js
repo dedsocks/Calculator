@@ -14,25 +14,35 @@ btns.forEach(btn =>{
                 }
                 else{
                     operate();
-                    operator = "+";
+                    if(number1 !== btn.textContent){ 
+                        operator = btn.textContent;
+                    }//this condition is to resolve the issue if same sign has been entered multiple times 
                 }
                 break;
+
             case "-":
                 if(checkIfAssignSign()){
                     updateOperand(btn.textContent);
                 }
                 else{
                     operate();
-                    operator = "-";
+                    if(number1 !== btn.textContent){ 
+                        operator = btn.textContent;
+                    }
                 }
                 break;
+
             case "×":
-                operate();
-                operator = "*";
+                if(number1 !== ""){
+                    operate();
+                    operator = "*";
+                }
                 break;
             case "÷":
-                operate();
-                operator = "/";
+                if(number1 !== ""){
+                    operate();
+                    operator = "*";
+                }
                 break;
             case "=":
                 operate();
