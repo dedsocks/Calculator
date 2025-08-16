@@ -1,5 +1,5 @@
 let number1 = "";
-let number0 = "";
+let number2 = "";
 let operator = "";
 let numberIdentifyFlag = 1;//flag to identify which number to input 
 
@@ -7,69 +7,73 @@ const display = document.querySelector("#displayBottom");
 const btns = Array.from(document.querySelectorAll("button"));
 
 btns.forEach(btn =>{
-    btn.addEventListener("click", event =>{
-        switch (btn.textContent){
-            case '+':
-                if(operator) operate(number1,number0,operator);
-                if(!number1){
-                    assignNumber('+');
-                }
-                else {
-                    operator = '+';
-                    numberIdentifyFlag = !numberIdentifyFlag;
-                }
+    btn.addEventListener("click",event =>{
+        switch(btn.textContent){
+            case "+":
+                operator = "+";
                 break;
-            case '-':
-                if(operator) operate(number1,number0,operator);
-                if(!number1){
-                    assignNumber('-');
-                }
-                else {
-                    operator = '-';
-                    numberIdentifyFlag = !numberIdentifyFlag;
-                }
+            case "-":
+                operator = "-";
                 break;
-            case '×':
+            case "×":
+                operator = "*";
                 break;
-            case '÷':
+            case "÷":
+                operator = "/";
                 break;
-            case 'CLEAR':
-                number1 = number0 = operator = '';
+            case "=":
+                operate();
+                break;
+            case "CLEAR":
+                number1 = number2 = operator = '';
                 updateDisplay('');
                 break;
             default:
-                assignNumber(btn.textContent);
+                updateOperand(btn.textContent);
         }
     })
 })
 
-function assignNumber(inputDigit){
-    if(numberIdentifyFlag) {
-        number1 += inputDigit;
+function updateOperand(updateValue){
+    if (operator === ''){
+        number1 += updateValue;
         updateDisplay(number1);
     }
     else {
-        number0 += inputDigit;
-        updateDisplay(number0)
+        number2 += updateValue;
+        updateDisplay(number2);
     }
 }
 
-function updateDisplay(inputNumber){
-    display.textContent = inputNumber;
+function updateDisplay(displayValue){
+    display.textContent = displayValue;
 }
 
-function operate(num1,num0,op){
-    switch(op){
-        case '+':
-            number1 = String(parseInt(num1) + parseInt(num0));
+function operate(){
+    switch(operator){
+        case "+":
+            number1 = String(parseInt(number1) + parseInt(number2));
             updateDisplay(number1);
-            number0 = '';
+            number2 = '';
+            operator = '';
             break;
-        case '-':
-            number1 = String(parseInt(num1) - parseInt(num0));
+        case "-":
+            number1 = String(parseInt(number1) - parseInt(number2));
             updateDisplay(number1);
-            number0 = '';
+            number2 = '';
+            operator = '';
+            break;
+        case "*":
+            number1 = String(parseInt(number1) * parseInt(number2));
+            updateDisplay(number1);
+            number2 = '';
+            operator = '';
+            break;
+        case "/":
+            number1 = String(parseInt(number1) / parseInt(number2));
+            updateDisplay(number1);
+            number2 = '';
+            operator = '';
             break;
     }
 }
-
