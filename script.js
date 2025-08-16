@@ -9,12 +9,22 @@ btns.forEach(btn =>{
     btn.addEventListener("click",event =>{
         switch(btn.textContent){
             case "+":
-                operate();
-                operator = "+";
+                if(checkIfAssignSign()){
+                    updateOperand(btn.textContent);
+                }
+                else{
+                    operate();
+                    operator = "+";
+                }
                 break;
             case "-":
-                operate();
-                operator = "-";
+                if(checkIfAssignSign()){
+                    updateOperand(btn.textContent);
+                }
+                else{
+                    operate();
+                    operator = "-";
+                }
                 break;
             case "×":
                 operate();
@@ -31,6 +41,8 @@ btns.forEach(btn =>{
                 number1 = number2 = operator = '';
                 updateDisplay('');
                 break;
+            case "DEL":
+                break;
             default:
                 updateOperand(btn.textContent);
         }
@@ -46,6 +58,10 @@ function updateOperand(updateValue){
         number2 += updateValue;
         updateDisplay(number2);
     }
+}
+
+function checkIfAssignSign(sign){
+    return ((number1 === "") || ((number2 === "") && (operator !== "")));
 }
 
 function updateDisplay(displayValue){
