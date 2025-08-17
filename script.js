@@ -5,72 +5,15 @@ let operator = "";
 const display = document.querySelector("#displayBottom");
 const btns = Array.from(document.querySelectorAll("button"));
 
+document.addEventListener("keydown",event => {
+    respondToInput(event.key);
+});
+
 btns.forEach(btn =>{
-    btn.addEventListener("click",event =>{
-        switch(btn.textContent){
-            case "+":
-                if(checkIfAssignSign()){
-                    updateOperand(btn.textContent);
-                }
-                else{
-                    operate();
-                    if(number1 !== btn.textContent){ 
-                        operator = btn.textContent;
-                    }//this condition is to resolve the issue if same sign has been entered multiple times 
-                }
-                break;
-
-            case "-":
-                if(checkIfAssignSign()){
-                    updateOperand(btn.textContent);
-                }
-                else{
-                    operate();
-                    if(number1 !== btn.textContent){ 
-                        operator = btn.textContent;
-                    }
-                }
-                break;
-
-            case "×":
-                if(number1 === "+" || number1 === "-" || number1 =="");
-                else{
-                    operate();
-                    operator = "*";
-                }
-                break;
-
-            case "÷":
-                if(number1 === "+" || number1 === "-" || number1 =="");
-                else{
-                    operate();
-                    operator = "/";
-                }
-                break;
-
-            case "=":
-                operate();
-                break;
-
-            case "CLEAR":
-                number1 = number2 = operator = '';
-                updateDisplay('');
-                break;
-
-            case "DEL":
-                deleteNumber();
-                break;
-
-            case ".":
-                addDot();
-                break;
-
-            default:
-                updateOperand(btn.textContent);
-                break;
-        }
+    btn.addEventListener("click",() =>{
+        respondToInput(btn.textContent);
     })
-})
+});
 
 function updateOperand(updateValue){
     if (operator === ''){
@@ -172,5 +115,102 @@ function divideNumbers(){
 }
 
 function deleteNumber(){
+    if (operator === ''){
+        if(number1 !== ""){
+            number1 = number1.slice(0,number1.length-1);
+            updateDisplay(number1);
+        }
+    }
+    else {
+        number2 = number2.slice(0,number2.length-1);
+        updateDisplay(number2);
+    }
+}
 
+function respondToInput(inputContent){
+    switch(inputContent){
+            case "+":
+                if(checkIfAssignSign()){
+                    updateOperand(inputContent);
+                }
+                else{
+                    operate();
+                    if(number1 !== inputContent){ 
+                        operator = inputContent;
+                    }//this condition is to resolve the issue if same sign has been entered multiple times 
+                }
+                break;
+
+            case "-":
+                if(checkIfAssignSign()){
+                    updateOperand(inputContent);
+                }
+                else{
+                    operate();
+                    if(number1 !== inputContent){ 
+                        operator = inputContent;
+                    }
+                }
+                break;
+
+            case "×":
+                if(number1 === "+" || number1 === "-" || number1 =="");
+                else{
+                    operate();
+                    operator = "*";
+                }
+                break;
+
+            case "÷":
+                if(number1 === "+" || number1 === "-" || number1 =="");
+                else{
+                    operate();
+                    operator = "/";
+                }
+                break;
+            
+            case "*":
+                if(number1 === "+" || number1 === "-" || number1 =="");
+                else{
+                    operate();
+                    operator = "*";
+                }
+                break;
+
+            case "/":
+                if(number1 === "+" || number1 === "-" || number1 =="");
+                else{
+                    operate();
+                    operator = "/";
+                }
+                break;
+            
+            case "=":
+                operate();
+                break;
+            
+            case "Enter":    
+                operate();
+                break;
+
+            case "CLEAR":
+                number1 = number2 = operator = '';
+                updateDisplay('');
+                break;
+            
+            case "Backspace":
+                deleteNumber();
+                break;
+
+            case "DEL":
+                deleteNumber();
+                break;
+
+            case ".":
+                addDot();
+                break;
+
+            default:
+                if( String(parseInt(inputContent)) !== "NaN" )updateOperand(inputContent); ;
+    }
 }
