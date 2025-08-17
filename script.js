@@ -33,31 +33,41 @@ btns.forEach(btn =>{
                 break;
 
             case "×":
-                if(number1 !== ""){
+                if(number1 === "+" || number1 === "-" || number1 =="");
+                else{
                     operate();
                     operator = "*";
                 }
                 break;
+
             case "÷":
-                if(number1 !== ""){
+                if(number1 === "+" || number1 === "-" || number1 =="");
+                else{
                     operate();
-                    operator = "*";
+                    operator = "/";
                 }
                 break;
+
             case "=":
                 operate();
                 break;
+
             case "CLEAR":
                 number1 = number2 = operator = '';
                 updateDisplay('');
                 break;
+
             case "DEL":
+                deleteNumber();
                 break;
+
             case ".":
                 addDot();
                 break;
+
             default:
                 updateOperand(btn.textContent);
+                break;
         }
     })
 })
@@ -76,14 +86,26 @@ function updateOperand(updateValue){
 function addDot(){
     if (operator === ''){
         if(number1.indexOf('.') === -1){
-            number1 += '.';
-            updateDisplay(number1);
+            if(number1 === "") {
+                number1 = "0.";
+                updateDisplay(number1);
+            }
+            else{
+                number1 += '.';
+                updateDisplay(number1);    
+            }
         }
     }
     else {
         if(number2.indexOf('.') === -1){
-            number2 += '.';
-            updateDisplay(number2);
+            if(number2 === "") {
+                number1 = "0.";
+                updateDisplay(number2);
+            }
+            else{
+                number2 += '.';
+                updateDisplay(number2);    
+            }
         }
     }
 }
@@ -147,4 +169,8 @@ function divideNumbers(){
         number2 = '';
         operator = '';
     }
+}
+
+function deleteNumber(){
+
 }
