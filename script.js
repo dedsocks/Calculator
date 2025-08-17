@@ -17,12 +17,16 @@ btns.forEach(btn =>{
 
 function updateOperand(updateValue){
     if (operator === ''){
-        number1 += updateValue;
-        updateDisplay(number1);
+        if(number1.length <= 15){
+            number1 += updateValue;
+            updateDisplay(number1);
+        }
     }
     else {
-        number2 += updateValue;
-        updateDisplay(number2);
+        if(number2.length <= 15){
+            number2 += updateValue;
+            updateDisplay(number2);
+        }
     }
 }
 
@@ -58,7 +62,8 @@ function checkIfAssignSign(sign){
 }
 
 function updateDisplay(displayValue){
-    display.textContent = displayValue;
+    if(displayValue.length <= 30) display.textContent = displayValue;
+    else display.textContent = "Number is too large";
 }
 
 function operate(){
