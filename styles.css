@@ -74,6 +74,16 @@ button{
     font-weight: 600;
     color: rgb(69, 81, 69);
     box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.5);
+    opacity: 85%;
+}
+
+button:hover{
+    opacity: 100%;
+    transform: scale3d(0.97, 0.97, -2); 
+}   
+
+button:active{
+    transform: scale3d(0.90, 0.90, -4);
 }
 
 #clearBtn{
