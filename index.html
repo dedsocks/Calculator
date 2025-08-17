@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header">CALCULATOR.</div>
     <div id="mainContainer">
         <div id="calculator">
             <div id="displayContainer">
@@ -16,28 +17,36 @@
                 </div>
             </div>
             <div id="btnContainer">
-                <div id="topBtns">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>CLEAR</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>+</button>
-                    <button>DEL</button>
+                <div id="btnRow1" class="topRow">
+                    <button class="numButton">1</button>
+                    <button class="numButton">2</button>
+                    <button class="numButton">3</button>
+                    <button id="clearBtn">CLEAR</button>
                 </div>
-                <div id="bottomBtns">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>-</button>
-                    <button>0</button>
-                    <button>.</button>
-                    <button>÷</button>
-                    <button>×</button>
+                <div id="btnRow2" class="topRow">
+                    <button class="numButton">4</button>
+                    <button class="numButton">5</button>
+                    <button class="numButton">6</button>
+                    <button class="smallerBtn" class="operatorButton">+</button>
+                    <button class="smallerBtn" class="delButton" class="numButton">DEL</button>
                 </div>
-                <button>=</button>
+                <div id="bottomBtnContainer">
+                    <div id="bottomBtns">
+                        <div id="bottomBtnsRow1" class="topRow">
+                            <button class="numButton">7</button>
+                            <button class="numButton">8</button>
+                            <button class="numButton">9</button>
+                            <button class="operatorButton">-</button>
+                        </div>
+                        <div id="bottomBtnRow2" class="topRow">
+                            <button class="numButton">0</button>
+                            <button class="operatorButton">.</button>
+                            <button class="operatorButton">÷</button>
+                            <button class="operatorButton">×</button>
+                        </div>
+                    </div>
+                    <div id="equalBtnContainer"><button id="equalBtn">=</button></div>
+                </div>
             </div>
         </div>
     </div>

@@ -62,7 +62,7 @@ function checkIfAssignSign(sign){
 }
 
 function updateDisplay(displayValue){
-    if(displayValue.length <= 30) display.textContent = displayValue;
+    if(displayValue.length <= 19) display.textContent = displayValue;
     else display.textContent = "Number is too large";
 }
 
