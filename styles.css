@@ -3,13 +3,16 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-body{
+html, body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     background-color: rgb(40, 40, 40);
     color: white;
     padding: 0.5%;
+    height: 100vh;
+    width: 100vw;
 }
 
 #header{
@@ -17,23 +20,15 @@ body{
     font-weight: 600;
 }
 
-#mainContainer{
-    display: flex;
-    justify-content: center;
-}
-
 #calculator{
-    width: 22rem;
     display: flex;
     flex-direction: column;
     gap: 1.2em;
     padding: 5%;
     border-radius: 15px;
     background-color: rgb(72, 72, 72);
-    margin-bottom: 7%;
-    margin-top: 7%;
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
-    
+    width: 22rem;
 }
 
 #displayContainer{
@@ -59,17 +54,16 @@ body{
 
 .topRow{
     display: flex;
-    justify-content: space-around;
 }
 
 button{
     margin: 0;
+    padding: 0;
     flex: 1;
     height: auto;
     aspect-ratio: 1/1;
     border-radius: 15px;
     border : none;
-    padding: 0;
     font-size: x-large;
     font-weight: 600;
     color: rgb(69, 81, 69);
@@ -93,21 +87,8 @@ button:active{
     color: white;
 }
 
-.smallerBtn{
-    flex: 1;
-    background-color:  rgb(171, 171, 171);
-    color: white;
-}
-
 #bottomBtnContainer{
     display: flex;
-    
-}
-
-#equalBtnContainer{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 #equalBtn{
@@ -121,11 +102,6 @@ button:active{
     flex: 4;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.delButton{
-    color: rgb(255, 136, 136);
 }
 
 .numButton{
